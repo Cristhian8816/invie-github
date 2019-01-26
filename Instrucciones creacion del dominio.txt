@@ -1,0 +1,48 @@
+Github permite personalizar la URL de nuestros proyectos desde Github Pages, para ello hay que comprar un dominio por ejemplo en namecheap namecheap.com.
+
+Name cheap= nombre barato
+Namecheap es una buena opción, tiene buen soporte.
+
+Iniciamos el proceso buscando la disponibilidad del dominio:
+En caso de gustar de alguno, simplemente se sigue un proceso de compra, creando previamente una cuenta disponer de la tarjeta de crédito 
+(es un proceso normal como cualquier otro de compra por internet).
+
+Vamos al dashboard (tablero), donde entre otras cosas se puede ver una lista de los dominios que poseemos.
+Le damos clic a manage al que queremos administrar o configurar.
+Aquí lo que necesitamos es enlazar nuestro poryecto con Github a través de la opción de configuración de los DNS (Advanced DNS).
+
+No vamos a nuestro repositorio en Github y en la opción de setting:
+Bajamos hasta Github Pages
+Y cambiamos el nombre de la URL colocándole un Domain Custom, el cual es el que acabamos de crear en namecheap, lo especificamos y salvamos.
+Nos avisa que no se puede hacer un CNAME porque la rama está protegida.
+Para ello debemos crear un archivo que se llama CNAME y ubicarlo en master en la rama que queremos como nuestro github pages.
+
+Ingresamos en nuestro repositorio en este caso invie-github y vamos a crear un pull request (solicitud), clic en invie-github
+Clic en créate new file
+Y le damos un nombre y editamos su contenido especificándole el nombre de nuestro dominio de namecheap.
+Clic en commit new file.
+Lo que da paso a dar los detalles de nuestro Pull Request.
+En este caso le escribimos “Pesonalizando el dominio” y clic en Create Pull Request.
+Le agregamos colaboradores para que lo revisen y lo mezclen
+Nos vamos a revisar el pull request.
+Le añadimos un review y lo aprobamos clic en Approve y luego en submit review.
+Luego clic en Mege pull request para mezclarlo.
+Confirmamos la mezcla (clic en confirm merge).
+Y listo al ver el estatus Merged, hemos terminado
+
+Regresamos a setting y efectivamente nuestro proyecto tiene la nueva URL (ya que enlazamos a github con namecheap).
+
+Ahora regresamos a nuestro dominio en namecheap y quitamos los registros CNAME Record, porque ya no se quiere que enlace a la página de namecheap:
+Vamos a modificar URL Redirect Record, le colocamos que sea un A Record, es decir se van a crear dos A Record con las dos ip de Github, Clic en el 
+chulito o icono de tilde y queda confirmado el cambio.
+Colocamos la ip 192.30.252.153.
+
+Procedemos a crear el 2do A Record con la otra (la segunda) ip de Github:
+Colocamos la ip 192.30.252.154 y en la columna TTL le cambiamos a automático para los dos A Record.
+Le agregamos el CNAME Record (que corresponde al CNAME creado en Github).
+
+En este caso el target (destino) es leonidasesteban.github.io. (Debe llevar un punto al final porque a partir de allí se derivan el resto de proyectos).
+Confirmamos los cambios dando clic en el chulito o tilde (save changes) ylisto tenemos nuestro dominio personalizado conectando github con namecheap, sin
+ embargo el cambio no se reflejará de inmediato ya que lleva un tiempo que namecheap verifique y confirme los cambios (una hora, un días, normalmente dicen 
+que toma dos días), no es automático ya que se tiene que enlazar nuestro dominio en namecheap con nuestro host que es Github, sin embargo probando ahora mismo, 
+la página de invie-github cargo.
